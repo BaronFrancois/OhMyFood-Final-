@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Shrikhand&display=swap");
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.functionning,
+.choices__cards {
+  padding: 0 0.7rem;
+}
+
+@media (max-width: 1000px) {
+  .choices__cards,
+.functionning,
+article h2 {
+    padding: 0 1rem;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  padding: 0.3rem;
+  margin: 0;
+  position: relative;
+  font-size: 0.8rem;
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #f3f3f3;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.6rem;
+  font-style: normal;
+}
+.place i {
+  font-size: 1rem;
+}
+
+.exploration {
+  text-align: center;
+  padding: 2rem 0.8rem;
+  background-color: #f9f9f9;
+}
+.exploration.exploration h2 {
+  font-size: 1.1rem;
+  margin: 1rem;
+}
+.exploration.exploration p {
+  font-size: 0.9rem;
+}
+.exploration.exploration button {
+  color: white;
+  font-weight: 300;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 1.2rem;
+  transition: transform 200ms;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 0px 8px 7px 0px #b3b0b0;
+  background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
+  font-size: 0.8rem;
+}
+.exploration.exploration button:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.loader {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background-color: #ffffff;
+  height: 100vh;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.9;
+  animation: disappear 50ms 0.8s forwards;
+  transform-origin: center;
+}
+.loader.loader::after {
+  content: "";
+  height: 100px;
+  width: 100px;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #9356dc;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out;
+  animation-iteration-count: 3;
+}
+
+@keyframes disappear {
+  to {
+    transform: scale(0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.functionning {
+  counter-reset: steps;
+  margin-bottom: 2rem;
+}
+
+.functionning ol {
+  display: flex;
+  gap: 2rem;
+  padding: 0 0 1rem 1rem;
+}
+
+@media (max-width: 1000px) {
+  .functionning ol {
+    flex-direction: column;
+  }
+}
+.functionning li {
+  font-size: 0.8rem;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  background-color: #f6f6f6;
+  padding: 1.1rem 1.8rem;
+  flex-grow: 1;
+  border-radius: 1rem;
+  box-shadow: 2px 1px 8px -3px #7e7e7e;
+}
+
+.functionning li::before {
+  content: counter(steps);
+  counter-increment: steps;
+  color: white;
+  background-color: #9356dc;
+  width: 1rem;
+  height: 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -1rem;
+  transform: translateY(-50%);
+  font-weight: normal;
+}
+
+.functionning li:hover {
+  transform: scale(1.02);
+  background-color: #f2eafb;
+}
+
+.functionning li:hover i::before {
+  color: #9356dc;
+}
+
+.functionning li i.fas {
+  margin-right: 1rem;
+  color: #7e7e7e;
+  font-size: 1rem;
+}
+
+#homepage .choices {
+  background-color: #f7f7f7;
+  padding-bottom: 2rem;
+}
+
+#homepage .choices .choices__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1000px) {
+  #homepage .choices .choices__cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+#homepage .choices .choices__cards .new {
+  position: relative;
+}
+
+#homepage .choices .choices__cards .new::before {
+  content: "Nouveau";
+  position: absolute;
+  height: 2rem;
+  width: 5rem;
+  background-color: #99e2d0;
+  color: #1b6150;
+  display: grid;
+  place-items: center;
+  right: 1rem;
+  top: 1rem;
+}
+
+#homepage .choices .card__image {
+  height: 8rem;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 2px 1px 8px 0px #7e7e7e;
+  background-size: cover;
+  background-position: center;
+}
+
+#homepage .choices .restaurants-card .card__1-LPG {
+  background-image: url("assets/1-LPG.jpg");
+}
+
+#homepage .choices .card__2-LNE {
+  background-image: url("assets/2-LNE.jpg");
+}
+
+#homepage .choices .card__3-ALF {
+  background-image: url("assets/3-ALF.jpg");
+}
+
+#homepage .choices .card__4-DDS {
+  background-image: url("assets/4-DDS.jpg");
+}
+
+#homepage .choices .card__description {
+  position: relative;
+  background-color: white;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 2px 1px 8px 0px #7e7e7e;
+}
+
+#homepage .choices .card__description::before {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f004";
+  font-size: 2rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+#homepage .choices .card__description::after {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f004";
+  font-size: 2rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  background-image: linear-gradient(to top, #9356dc, #ff79da);
+}
+
+#homepage .choices .card__description:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+#homepage .choices .card__description h3,
+#homepage .choices .card__description p {
+  padding: 0.3rem;
+}
+
+footer {
+  background-color: #353535;
+  padding: 1rem 1rem;
+  color: white;
+}
+
+footer h2 {
+  font-family: "Shrikhand", "sans-serif";
+  font-weight: 500;
+  padding: 1rem 0;
+}
+
+footer a {
+  padding: 0.2rem;
+}
+
+/*# sourceMappingURL=style.css.map */

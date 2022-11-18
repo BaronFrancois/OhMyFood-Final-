@@ -1,0 +1,23 @@
+{
+  "name": "ohmyfood",
+  "description": "P3 Openclassrooms 22/11",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch sass/style.scss ./style.css" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaronFrancois/OhMyFood.git"
+  },
+  "author": "François BARON",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaronFrancois/OhMyFood/issues"
+  },
+  "homepage": "https://github.com/BaronFrancois/OhMyFood#readme",
+  "devDependencies": {
+    "sass": "^1.55.0"
+  }
+}

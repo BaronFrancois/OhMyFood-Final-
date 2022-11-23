@@ -68,11 +68,11 @@ header h1 {
   margin-left: -1.2rem;
 }
 .place i {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .place.place h2 {
   font-weight: 500;
-  color: #535353;
+  color: #414141;
 }
 
 .exploration p {
@@ -146,7 +146,7 @@ header h1 {
 }
 .functionning {
   counter-reset: steps;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .functionning.functionning ol {
   display: flex;
@@ -155,8 +155,8 @@ header h1 {
   margin-top: 0.5rem;
 }
 .functionning.functionning li {
-  font-size: 13.5px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: bold;
   position: relative;
   display: flex;
   align-items: center;
@@ -165,15 +165,16 @@ header h1 {
   padding: 1.2rem 1.8rem;
   flex-grow: 1;
   border-radius: 1rem;
-  box-shadow: 2px 1px 8px -3px #7e7e7e;
+  box-shadow: -1px 6px 15.5px -11px #7e7e7e;
 }
 .functionning.functionning li::before {
   content: counter(steps);
+  font-size: 10.5px;
   counter-increment: steps;
   color: white;
   background-color: #9356dc;
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -182,6 +183,7 @@ header h1 {
   left: -0.4rem;
   transform: translateY(-50%);
   font-weight: normal;
+  padding-top: 4px;
 }
 .functionning.functionning li:hover {
   transform: scale(1.02);
@@ -218,7 +220,7 @@ header h1 {
 #homepage .choices .choices__cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1rem;
 }
 
 @media (max-width: 1000px) {
@@ -233,22 +235,24 @@ header h1 {
 #homepage .choices .choices__cards .new::before {
   content: "Nouveau";
   position: absolute;
-  height: 2rem;
-  width: 5rem;
+  height: 1.5rem;
+  width: 4rem;
   background-color: #99e2d0;
-  color: #1b6150;
+  color: #2aa082;
   display: grid;
   place-items: center;
   right: 1rem;
   top: 1rem;
+  font-size: 11px;
+  font-weight: 500;
 }
 
 #homepage .choices .card__image {
-  height: 8rem;
+  height: 9rem;
   border-radius: 1rem 1rem 0 0;
   box-shadow: 2px 1px 8px 0px #7e7e7e;
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
 }
 
 #homepage .choices .restaurants-card .card__1-LPG {
@@ -257,6 +261,7 @@ header h1 {
 
 #homepage .choices .card__2-LNE {
   background-image: url("assets/2-LNE.jpg");
+  background-position: center;
 }
 
 #homepage .choices .card__3-ALF {
@@ -284,9 +289,9 @@ header h1 {
   font-family: "Font Awesome 5 Free";
   font-weight: 400;
   content: "\f004";
-  font-size: 2rem;
+  font-size: 1.2rem;
   right: 1rem;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   color: inherit;
   background-clip: text;
@@ -305,9 +310,9 @@ header h1 {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f004";
-  font-size: 2rem;
+  font-size: 1.2rem;
   right: 1rem;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   color: transparent;
   background-clip: text;
@@ -324,24 +329,47 @@ header h1 {
 
 #homepage .choices .card__description h3,
 #homepage .choices .card__description p {
-  padding: 0.3rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+#homepage h3 {
+  padding: 0.8rem 0 0 0.8rem;
+}
+
+#homepage .card__description p {
+  padding: 0 0 0.8rem 0.8rem;
 }
 
 footer {
   background-color: #353535;
-  padding: 1rem 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
+  color: rgb(221, 220, 220);
+  font-size: 1rem;
+}
+
+footer h2, footer i, footer .bold {
   color: white;
 }
 
 footer h2 {
   font-family: "Shrikhand", "sans-serif";
   font-weight: 500;
-  padding: 1rem 0;
+  padding: 0 0 1rem;
+  font-size: 15px;
 }
 
-footer a {
+footer strong {
+  font-weight: 400;
+}
+
+footer p {
+  font-size: 13px;
   padding: 0.2rem;
+}
+
+footer i {
+  font-size: 10px;
+  padding-right: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

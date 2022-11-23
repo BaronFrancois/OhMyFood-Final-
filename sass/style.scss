@@ -11,15 +11,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
  .functionning,
- .choices__cards
 {
   padding: 0 0.7rem;
 }
 
 @media (max-width: 1000px) {
-  .choices__cards,
-  .functionning,
-  article h2 {
+  .functionning {
     padding: 0 1rem;
   }
 }
@@ -35,7 +32,10 @@ p
   padding: 0;
   margin: 0;
 }
-
+.functionning h2,
+article h2 {
+  font-size: 1.2rem;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -50,6 +50,9 @@ header {
   position: relative;
   font-size: 0.8rem;
 }
+header h1 {
+  font-weight: 200;
+ }
 
 .place {
   display: flex;
@@ -58,24 +61,35 @@ header {
   gap: 1rem;
   background-color: #f3f3f3;
   text-align: center;
-  padding: 0.5rem;
-  font-size: 0.6rem;
+  padding: 0.9rem;
+  font-size: 8.6px;
   font-style: normal;
+  margin-left:-1.2rem;
   & i{
     font-size: 1rem;
   }
+  &.place h2 {
+    font-weight: 500;
+    color: #535353;
+  }
 }
+.exploration p{
+  font-weight: 400;
+  color: #7e7e7e;
+}
+
 
 .exploration {
   text-align: center;
-  padding: 2rem 0.8rem;
+  padding: 1rem 0.8rem 3rem;
   background-color: #f9f9f9;
   &.exploration h2 {
-    font-size: 1.1rem;
-    margin: 1rem;
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem 0;
   }
   &.exploration p {
     font-size: 0.9rem;
+    padding-bottom: 0.5rem;
   }
   &.exploration button {
     color: white;
@@ -133,62 +147,70 @@ header {
 .functionning {
   counter-reset: steps;
   margin-bottom: 2rem;
+  &.functionning ol {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0 0 1rem 0.5rem;
+    margin-top: 0.5rem;
+  }
+  &.functionning li {
+    font-size: 13.5px;
+    font-weight: 500 ;
+    position: relative;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    background-color: #f6f6f6;
+    padding: 1.2rem 1.8rem;
+    flex-grow: 1;
+    border-radius: 1rem;
+    box-shadow: 2px 1px 8px -3px #7e7e7e;
+  }
+  &.functionning li::before {
+    content: counter(steps);
+    counter-increment: steps;
+    color: white;
+    background-color: #9356dc;
+    width: 1rem;
+    height: 1rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: -0.4rem;
+    transform: translateY(-50%);
+    font-weight: normal;
+  }
+  &.functionning li:hover {
+    transform: scale(1.02);
+    background-color: #f2eafb;
+  }
+  &.functionning li:hover i::before {
+    color: #9356dc;
+  }
+  &.functionning li i.fas {
+    margin-right: 1rem;
+    color: #7e7e7e;
+    font-size: 1rem;
+  }
 }
-.functionning ol {
-  display: flex;
-  gap: 2rem;
-  padding: 0 0 1rem 1rem;
+.functionning h2, article h2{
+  padding: 2.6rem 0 1rem;
+}
+.functionning p{
+  width:100%;
+  text-align: center;
 }
 @media (max-width: 1000px) {
   .functionning ol {
     flex-direction: column;
   }
 }
-.functionning li {
-  font-size: 0.8rem;
-  font-weight: bold ;
-  position: relative;
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  background-color: #f6f6f6;
-  padding: 1.1rem 1.8rem;
-  flex-grow: 1;
-  border-radius: 1rem;
-  box-shadow: 2px 1px 8px -3px #7e7e7e;
-}
-.functionning li::before {
-  content: counter(steps);
-  counter-increment: steps;
-  color: white;
-  background-color: #9356dc;
-  width: 1rem;
-  height: 1rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: -1rem;
-  transform: translateY(-50%);
-  font-weight: normal;
-}
-.functionning li:hover {
-  transform: scale(1.02);
-  background-color: #f2eafb;
-}
-.functionning li:hover i::before {
-  color: #9356dc;
-}
-.functionning li i.fas {
-  margin-right: 1rem;
-  color: #7e7e7e;
-  font-size: 1rem;
-}
 
 #homepage .choices {
   background-color: #f7f7f7;
-  padding-bottom: 2rem;
+  padding: 0 1rem 3rem 1rem;
 }
 #homepage .choices .choices__cards {
   display: grid;
@@ -288,6 +310,7 @@ header {
 #homepage .choices .card__description h3,
 #homepage .choices .card__description p {
   padding: 0.3rem;
+  font-size: 1rem;
 }
 
 footer {

@@ -6,6 +6,7 @@
   --Tertiaire-color: #99e2d0;
   --shadow-color: #00000d4f;
   --box-shadow: 0px 6px 18px 0px var(--shadow-color);
+  --box-shadow-hover: 0px 6px 18px 0px #00000d8c;
 }
 
 *,
@@ -136,7 +137,7 @@ header h1 {
 .exploration.exploration button:hover {
   transform: scale(1.02);
   opacity: 0.9;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .loader {
@@ -220,7 +221,7 @@ header h1 {
 .functionning.functionning li:hover {
   transform: scale(1.02);
   background-color: #f2eafb;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-hover);
 }
 .functionning.functionning li:hover i::before {
   color: #9356dc;
@@ -302,7 +303,7 @@ article h2 {
 #homepage .choices .restaurants-card:hover {
   scale: 101%;
   border-radius: 1rem 1rem 1rem 1rem;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-hover);
 }
 
 #homepage .choices .restaurants-card .card__1-LPG {
@@ -675,7 +676,7 @@ body {
 #page-resto section.order button:hover {
   transform: scale(1.02);
   opacity: 0.9;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-hover);
 }
 
 /*# sourceMappingURL=style.css.map */

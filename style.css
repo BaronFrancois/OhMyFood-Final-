@@ -292,7 +292,7 @@ article h2 {
   border-radius: 1rem 1rem 0 0;
   box-shadow: var(--box-shadow);
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
 }
 
 @media (min-width: 1160px) {
@@ -312,7 +312,6 @@ article h2 {
 
 #homepage .choices .card__2-LNE {
   background-image: url("assets/2-LNE.jpg");
-  background-position: center;
 }
 
 #homepage .choices .card__3-ALF {

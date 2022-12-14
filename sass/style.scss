@@ -1,3 +1,4 @@
+// Importation des font
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Shrikhand&display=swap");
 :root {
@@ -8,19 +9,21 @@
   --box-shadow: 0px 5px 12px -4px var(--shadow-color);
   --box-shadow-hover: 0px 5px 12px -4px #00000d8c;
 }
+// utilisation de box-sizing pour eviter les parametres par défauts de margin
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
-.bg img{
-  background-size: 1400px 100%;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  position: absolute;
-  opacity: 70%;
-  z-index: 2;
-}
+
+// .bg img{
+  // background-size: 1400px 100%;
+  // background-repeat: no-repeat;
+  // background-position-x: center;
+  // position: absolute;
+  // opacity: 70%;
+  // z-index: 2;
+// }
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -28,24 +31,26 @@ body {
  .functionning {
   padding: 0 0.7rem;
 }
-
+// j'ai essayé de trouver un paramètre simple et globale pour agrandir la font quand on passe en mode tablette / desktop
 @media (min-width:1160px){
   *{
     font-size: x-large;
    }
 
 }
+// ce n'était pas suffisant pour le h1
 @media(min-width:1160px){
   header h1{
     font-size: 30px;
   }
 }
+// rajout de cette classe pour forcer la taille
 @media(min-width:1160px){
   .large{
     font-size: 1.5rem;
   }
 }
-
+// pour enlever les parametres par defaut
 h1,
 h2,
 h3,
@@ -57,17 +62,19 @@ p
   padding: 0;
   margin: 0;
 }
+// pour enlever les parametre de base sur <a href>
 a {
   text-decoration: none;
   color: inherit;
 }
 
-// HEADER
+//----------------------------------- HEADER-------------------------------------------
 
 
 header {
   font-family: "Shrikhand", cursive;
   text-align: center;
+  // modification de la propriété color et box shadow pour que tout soit armonieux
   box-shadow: var(--box-shadow);
   padding: 0.3rem;
   margin: 0;
@@ -110,6 +117,7 @@ header h1 {
 .exploration {
   text-align: center;
   padding: 1rem 0.8rem 3.6rem;
+  // je n'ai pas utilisé de varaible, il me semble c'est la seule nuance de gris qui a cette teinte
   background-color: #f9f9f9;
   &.exploration h2 {
     font-size: 1.4rem;
@@ -131,9 +139,11 @@ header h1 {
     margin-top: 0.7rem;
     cursor: pointer;
     box-shadow: var(--box-shadow);
+    // linear gradient : degradé linéaire / to top = du haut vers le bas puis la suite de variable de couleur
     background-image: linear-gradient(to top, var(--primaire-color), var(--secondaire-color));
     font-size: 1rem;
   }
+  // j'ai suivi la commande en hover: la couleur doit d'éclaircir (opacity 0.9 donc -0.1) augmenter la taille (scale 1.02 donc +0.02) et j'ai rajouté la propriété de l'ombre portée pour qu'elle s'adapte à la taille du hover qu'elle soit donc plus visible)
   &.exploration button:hover {
     transform: scale(1.02);
     opacity: 0.9;
@@ -143,40 +153,52 @@ header h1 {
 }
 
 .loader {
+  // j'ai regardé différentes manieres de faire, j'ai choisi de rester simple tout en rajoutant une couleur de la maquette pour que ça reste cohérent
+  // j'ai utilisé https://codepen.io/0x04/pen/DeNyLM pour voir les différentes propriétés, tester et m'aider à mieux comprendre
   position: fixed;
   display: grid;
   place-items: center;
   background-color: #ffffff;
   height: 100vh;
   inset: 0;
+  // pour qu'il soit visible au dessus de la page dans l'axe z (profondeur)
   z-index: 1;
   opacity: 0.9;
+  // animation de la disparition du loader / temps de la disparition du bloc / le temps de l'animation / la direction
   animation: disappear 50ms 1s forwards;
   transform-origin: center;
   &.loader::after {
     content: "";
+    // j'ai voulu représenter un cercle qui tourne
     height: 100px;
     width: 100px;
+    // border-right donne l'angle de fin avec la valeur transparent
     border-right: 5px solid transparent;
+    // border-top sert à définir la largeur de mon loader
     border-top: 5px solid var(--primaire-color);
     border-radius: 50%;
+    // l'animation tourne/ le temps de l'animation / et "l'effet" de l'animation dans la variabilité du rythme ease-in-out pourrait se traduire en "plus lent au début et à la fin"
     animation: spin 1s ease-in-out;
+    // c'est le nombre de boucle que l'animation doit produire au maximum, vu qu'il était demandé une animation comprise entre 1 et 3s, 3 boucles suffisent amplement
     animation-iteration-count: 3;
   }
 }
 
 @keyframes disappear {
   to {
+    // pour disparaitre sa taille doit se réduire à 0 (avec une valeur de base de 1)
     transform: scale(0);
   }
 }
 @keyframes spin {
   to {
+    // rotation à 360 degré ce qui correspond à un tour complet
     transform: rotate(360deg);
   }
 }
 
 .functionning {
+  // pour avoir les numéros dans les bulles = j'ai cherché à ne pas juste mettre des numéros en span mais à voir si je pouvais faire en sorte d'optimiser dans le cadre d'un projet s'il y avait plusieurs choses à rajouter la par la suite. Je me suis renseigné
   counter-reset: steps;
   padding: 0 1rem;
   padding-bottom: 2rem;
@@ -204,8 +226,10 @@ header h1 {
     cursor: pointer;
   }
   &.functionning li::before {
+    //  il est formaté selon le style (<list-style-type> indiqué (decimal par défaut).)
     content: counter(steps);
     font-size: 10.5px;
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/counter-increment
     counter-increment: steps;
     color: white;
     background-color: #9356dc;
@@ -217,6 +241,7 @@ header h1 {
     position: absolute;
     top: 51.1%;
     left: -0.6rem;
+    // pas forcement nécessaire mais je trouvais ça plus esthétique avec l'animation
     transform: translateY(-50%);
     font-weight: normal;
   }
@@ -244,11 +269,6 @@ header h1 {
   width:100%;
   text-align: center;
 }
-@media (min-width: 1160px) {
-  .functionning.functionning ol {
-    flex-direction: row;
-  }
-}
 
 #homepage .choices {
   background-color: #f7f7f7;
@@ -258,11 +278,6 @@ header h1 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1.3rem;
-}
-@media (min-width: 1160px) {
-  #homepage .choices .choices__cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 #homepage .choices .choices__cards .new {
   position: relative;
@@ -292,12 +307,6 @@ article h2 {
   background-size: cover;
   background-position: center;
 }
-@media(min-width:1160px){
-  #homepage .choices .card__image {
-    height: 25rem;
-  }
-
-}
 #homepage .choices .restaurants-card:hover{
   scale:101%;
   border-radius: 1rem 1rem 1rem 1rem;
@@ -308,7 +317,7 @@ article h2 {
 }
 #homepage .choices .card__2-LNE {
   background-image: url("assets/2-LNE.jpg");
-
+  
 }
 #homepage .choices .card__3-ALF {
   background-image: url("assets/3-ALF.jpg");
@@ -322,6 +331,7 @@ article h2 {
   border-radius: 0 0 1rem 1rem;
   box-shadow: var(--box-shadow);
 }
+// NDLR = J'avais crée un hover uniquement, j'ai voulu essayer de rendre le boutton like clickable avec l'animation, voici mon ancien code
 // #homepage .choices .card__description::before {
 //   display: inline-block;
 //   position: absolute;
@@ -343,48 +353,55 @@ article h2 {
 //   opacity: 1;
 // }
 // #homepage .choices .card__description::after {
-//   display: inline-block;
-//   position: absolute;
-//   font-style: normal;
-//   font-variant: normal;
-//   text-rendering: auto;
-//   -webkit-font-smoothing: antialiased;
-//   font-family: "Font Awesome 5 Free";
-//   font-weight: 900;
-//   content: "\f004";
-//   font-size: 1.5rem;
-//   right: 1.6rem;
+  //   display: inline-block;
+  //   position: absolute;
+  //   font-style: normal;
+  //   font-variant: normal;
+  //   text-rendering: auto;
+  //   -webkit-font-smoothing: antialiased;
+  //   font-family: "Font Awesome 5 Free";
+  //   font-weight: 900;
+  //   content: "\f004";
+  //   font-size: 1.5rem;
+  //   right: 1.6rem;
+  //   top: 45%;
+  //   transform: translateY(-50%);
+  //   color: transparent;
+  //   background-clip: text;
+  //   -webkit-background-clip: text;
+  //   opacity: 0;
+  //   transition: all 200ms ease-in-out;
+  //   background-image: linear-gradient(to top,  #ff79da,#9356dc);
+  // }
+  // #homepage .choices .card__description:hover::after,
+  // #homepage .choices .card__description:focus::after {
+    //   opacity: 1;
+    //   transform: translateY(-50%) scale(1.1);
+    //   display: inline-block;
+    //   position: absolute;
+    //   font-style: normal;
+    //   font-variant: normal;
+    //   text-rendering: auto;
+    //   -webkit-font-smoothing: antialiased;
+    //   font-family: "Font Awesome 5 Free";
+    //   font-weight: 900;
+    //   content: "\f004";
+    //   font-size: 1.5rem;
+    //   right: 1.6rem;
 //   top: 45%;
-//   transform: translateY(-50%);
 //   color: transparent;
 //   background-clip: text;
 //   -webkit-background-clip: text;
-//   opacity: 0;
 //   transition: all 200ms ease-in-out;
 //   background-image: linear-gradient(to top,  #ff79da,#9356dc);
 // }
-// #homepage .choices .card__description:hover::after,
-// #homepage .choices .card__description:focus::after {
-//   opacity: 1;
-//   transform: translateY(-50%) scale(1.1);
-//   display: inline-block;
-//   position: absolute;
-//   font-style: normal;
-//   font-variant: normal;
-//   text-rendering: auto;
-//   -webkit-font-smoothing: antialiased;
-//   font-family: "Font Awesome 5 Free";
-//   font-weight: 900;
-//   content: "\f004";
-//   font-size: 1.5rem;
-//   right: 1.6rem;
-//   top: 45%;
-//   color: transparent;
-//   background-clip: text;
-//   -webkit-background-clip: text;
-//   transition: all 200ms ease-in-out;
-//   background-image: linear-gradient(to top,  #ff79da,#9356dc);
-// }
+// #page-resto .checkbox-like {
+  //   position: absolute;
+  //   right: 20px;
+  //   top:15.2%;
+  //   font-size: 25px;
+  //   cursor: pointer;
+  // }
 .checkbox-like {
   position: absolute;
   right: 20px;
@@ -392,62 +409,56 @@ article h2 {
   cursor: pointer;
   z-index: 2;
 }
-// #page-resto .checkbox-like {
-//   position: absolute;
-//   right: 20px;
-//   top:15.2%;
-//   font-size: 25px;
-//   cursor: pointer;
-// }
-.checkbox-like input[type=checkbox], .checkbox-like .checked {
-  display: none;
-  -webkit-animation: like 1s;
-  animation: like 1s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-.checkbox-like input[type=checkbox]:checked ~ .unchecked {
-  display: none;
-}
-.fa, .far, .fas {
-  font-family: "Font Awesome 5 Free";
-}
-.fab, .far {
-  font-weight: 400;
-}
-.checkbox-like input[type=checkbox]:checked ~ .checked {
-  display: inline-block;
-  color: rgba(255, 255, 255, 0);
-}
-.checkbox-like input[type=checkbox]:checked ~ .checked {
-  display: inline-block;
-  color: rgba(255, 255, 255, 0);
-}
-.fa-heart:before {
-    content: "\f004";
-}
-.checkbox-like {
-	margin-top: 1rem;
-}
-#page-resto .checkbox-like {
-  margin-top: 2rem;
-}
-
-@keyframes like {
-	0% { 
-      opacity: 0;
+// j'ai demandé de l'aide sur un serveur discord et on m'a renvoyé vers ceci: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
+  .checkbox-like input[type=checkbox], .checkbox-like .checked {
+    display: none;
+    -webkit-animation: like 1s;
+    animation: like 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
   }
-
+  .checkbox-like input[type=checkbox]:checked ~ .unchecked {
+    display: none;
+  }
+  .fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+  }
+  .fab, .far {
+    font-weight: 400;
+  }
+  // 
+  .checkbox-like input[type=checkbox]:checked ~ .checked {
+    // inline-block pour que ça "colle" à la check-box ("The element generates a block element box, generating line breaks both before and after the element when in the normal flow.")"
+    display: inline-block;
+    color: rgba(255, 255, 255, 0);
+  }
+  
+  .fa-heart:before {
+    content: "\f004";
+  }
+  .checkbox-like {
+    margin-top: 1rem;
+  }
+  #page-resto .checkbox-like {
+    margin-top: 2rem;
+  }
+  // evolution de l'animation dans son opacity et ses couleur
+@keyframes like {
+  0% { 
+    opacity: 0;
+  }
+  
   50% { 
-      background: linear-gradient(to bottom, var(--primaire-color),var(--secondaire-color));
-      -webkit-background-clip: text;
-    }
+    background: linear-gradient(to bottom, var(--primaire-color),var(--secondaire-color));
+    -webkit-background-clip: text;
+  }
 	
 	100% { 
       background: linear-gradient(to bottom, var(--primaire-color),var(--secondaire-color));
       -webkit-background-clip: text;
   	}
   }
+
 #homepage .choices .card__description h3,
 #homepage .choices .card__description p {
   font-size: 1.1rem;
@@ -458,6 +469,24 @@ article h2 {
 #homepage .card__description p{
   padding: 0 0 0.8rem 0.8rem ;
 }
+@media(min-width:1160px){
+  #homepage .choices .card__image {
+    height: 25rem;
+  }
+}
+@media (min-width: 1160px) {
+  // pour que la liste se mette en ligne par soucis d'ésthètisme
+  .functionning.functionning ol {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1160px) {
+  // j'ai ajouté ce breakpoint car le boutton like rentrait dans le texte vers 1275px
+  #homepage .choices .choices__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 1275px){
 #homepage .choices .choices__cards {
   display: grid;
@@ -465,7 +494,7 @@ article h2 {
   gap: 1rem;
 }
 }
-
+// ---------------------------FOOTER--------------------------------//
 footer {
   background-color: #353535;
   padding: 1.5rem 1.5rem;
@@ -500,7 +529,7 @@ footer i{
     width: auto;
   }
 }
-// RESTOS
+// -------------------------------------------#RESTOS------------------------------------//
 @keyframes appear {
   0% {
     transform: translateY(50%);
@@ -639,6 +668,7 @@ body {
   background-color: #99e2d0;
 }
 #page-resto .menus .menus__category {
+  // pour que le texte se remplace par trois petis point lorsqu'il est trop long pour l'animation.
   overflow: hidden;
 }
 #page-resto .menus .menus__category .menu-item {
@@ -648,17 +678,21 @@ body {
   overflow: hidden;
   margin: 0.5rem;
   box-shadow: var(--box-shadow);
+  // propriété dans ./animations.scss
   animation: appear 1s;
+  // Le but étant de modifier son style en même temps que l'animation en hover (https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode)
   animation-fill-mode: both;
 }
+// je me demandais comment faire en sorte de créer d'apparition comme demandé sur la maquette "Animation - Page Menu - Apparition progressive" j'ai trouvé ceci: https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child
+// Donc le but étant de faire que les dossier "enfants" directs de .menus__category (donc les trois div .menu-item) aient un temps d'apparition différents, on peut lire que child 1 apparaitra plus vite que child 2, que child 3.
 #page-resto .menus .menus__category .menu-item:nth-child(1) {
-  animation-delay: 100ms;
+animation-delay: 100ms;
 }
 #page-resto .menus .menus__category .menu-item:nth-child(2) {
-  animation-delay: 200ms;
+animation-delay: 200ms;
 }
 #page-resto .menus .menus__category .menu-item:nth-child(3) {
-  animation-delay: 300ms;
+animation-delay: 300ms;
 }
 #page-resto .menus .menus__category .menu-item .menu-item__price {
   margin-left: auto;
@@ -670,12 +704,15 @@ body {
 }
 #page-resto .menus .menus__category .menu-item .menu-item__description {
   padding: 1rem;
+  // sinon l'animation s'adapte à la taille du texte : on veut qu'il aille par "dessus"
   overflow: hidden;
 }
 #page-resto .menus .menus__category .menu-item .menu-item__description h4,
 #page-resto .menus .menus__category .menu-item .menu-item__description p {
   overflow: hidden;
+  // pour que tout tienne sur les deux lignes, et pour forcer l'animation demandée
   white-space: nowrap;
+  // apparition des trois petits points : https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
   text-overflow: ellipsis;
 }
 #page-resto .menu-item h4{
@@ -688,11 +725,14 @@ body {
 #page-resto .menus .menus__category .menu-item .menu-item__check {
   display: grid;
   place-items: center;
-  flex-shrink: 0;
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink = le but étant de la positionner en dehors de .menu-item
+  // flex-shrink: 0;
   border-radius: 0 1rem 1rem 0;
   background-color: var(--Tertiaire-color);
+  // le margin -4rem a l'air de convenir tout seul au final
   margin-right: -4rem;
   width: 4rem;
+  // pour que le resultat corresponde le plus à l'animation donnée "Animation - Page Menu - Sélection d'un plat"
   transition: margin-right 0.5s;
 }
 #page-resto .menus .menus__category .menu-item .menu-item__check i {
@@ -715,6 +755,7 @@ body {
 }
 @keyframes quarterspin {
   0% {
+    // rotation à l'envers donc négative (sens aiguille d'une montre) et il ne me semblait pas que dans l'animation donnée le logo fasse un tour complet j'ai donc choisi 270° en testant et en choisissant ce qui me semblait le plus proche du resultat escompté
     transform: rotate(-270deg);
   }
   100% {

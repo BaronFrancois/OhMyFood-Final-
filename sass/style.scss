@@ -293,7 +293,6 @@ header {
   background-position: center;
 }
 #homepage .choices .restaurants-card:hover{
-  scale:101%;
   border-radius: 1rem 1rem 1rem 1rem;
   box-shadow: var(--box-shadow-hover);
 }
@@ -315,6 +314,10 @@ header {
   background-color: white;
   border-radius: 0 0 1rem 1rem;
   box-shadow: var(--box-shadow);
+  // rajout de display flex et d'une width prédéfinie pour palier au probleme du à la position absolute que j'avais crée
+  display: flex;
+  flex-direction:row-reverse;
+  justify-content: space-between;
 }
 // NDLR = J'avais crée un hover uniquement, j'ai voulu essayer de rendre le boutton like clickable avec l'animation, voici mon ancien code
 // #homepage .choices .card__description::before {
@@ -388,11 +391,18 @@ header {
   //   cursor: pointer;
   // }
   .checkbox-like {
-    position: absolute;
-    right: 20px;
     font-size: 25px;
     cursor: pointer;
     z-index: 2;
+    width:10%;
+    margin-right: 0.5rem;
+  }
+  #page-resto .checkbox-like {
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    right: 0rem;
   }
   // j'ai demandé de l'aide sur un serveur discord et on m'a renvoyé vers ceci: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
   .checkbox-like input[type=checkbox], .checkbox-like .checked {
@@ -582,6 +592,7 @@ body {
   margin-top: -2rem;
 }
 #page-resto .resto__title h2 {
+  margin: -0.2rem;
   font-family: "Shrikhand", "cursive";
   padding: 2rem 3rem;
   position: relative;
@@ -698,11 +709,15 @@ animation-delay: 300ms;
   display: flex;
   align-items: flex-end;
   font-size: 0.9rem;
+  width:4rem;
+  justify-content: flex-end;
 }
 #page-resto .menus .menus__category .menu-item .menu-item__description {
   padding: 1rem;
   // sinon l'animation s'adapte à la taille du texte : on veut qu'il aille par "dessus"
   overflow: hidden;
+  // rajout de cette proprété par le biais de la soutenance : calc permet de mixer des valeurs varaibles et constantes.
+  width: calc(100% - 4rem);
 }
 #page-resto .menus .menus__category .menu-item .menu-item__description h4,
 #page-resto .menus .menus__category .menu-item .menu-item__description p {
